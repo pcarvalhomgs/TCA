@@ -1,0 +1,69 @@
+Visão Geral
+O contrato ImovelToken gerencia todo o ciclo de vida de um imóvel tokenizado. Ele foi construído usando o padrão ERC-1155, que é ideal para criar "frações" (tokens) de um ativo único (o imóvel). A segurança é garantida pelo padrão Ownable, que define uma única "Imobiliária" (dona do contrato) como a administradora.
+
+Estruturas de Dados (Os Campos de Registro)
+O contrato utiliza uma estrutura principal para armazenar as informações de cada imóvel.
+
+struct ImovelInfo
+Pense nisto como a "Ficha Cadastral" ou a "Escritura Digital" de cada imóvel. Ela contém os seguintes campos:
+
+string nome: O nome de identificação do imóvel (ex: "Edificio Rio Poty Executive").
+
+string enderecoCompleto: O endereço físico completo do imóvel.
+
+string urlImagem: Um link para uma foto do imóvel.
+
+string inscricaoImobiliaria: O número de registro do imóvel na prefeitura.
+
+string matricula: O número da matrícula do imóvel no cartório.
+
+string oficio: O nome do cartório de registro (ex: "1º Ofício de Teresina").
+
+uint256 valorTotal: O valor total de avaliação do imóvel, armazenado na menor unidade do Ether (Wei) para máxima precisão.
+
+address proprietarioOriginal: O endereço da carteira do "Dono do Imóvel" que solicitou a tokenização e recebeu as frações iniciais.
+
+uint256 totalDeTokens: A quantidade total de frações (tokens) que foram criadas para este imóvel.
+
+bool tokenizado: Um campo de segurança que confirma se este registro é válido.
+
+Funções Principais (As Ações do Cartório)
+Estas são as operações que podem ser executadas no contrato.
+
+1. tokenizarImovel(...)
+O que faz? É a função principal de registro. Ela cria a "Ficha Cadastral" (ImovelInfo) de um novo imóvel e "imprime" (cria/minta) todas as suas frações (tokens), entregando-as diretamente na carteira do proprietarioCarteira.
+
+Quem pode chamar? Apenas a Imobiliária (a carteira dona do contrato). Esta é a trava de segurança mais importante.
+
+Parâmetros (O que precisa): Todos os dados da struct ImovelInfo são necessários para registrar o imóvel corretamente.
+
+2. comprarTokens(uint256 tokenId, uint256 quantidade)
+O que faz? Permite que um "Terceiro" (qualquer usuário) compre uma certa quantidade de tokens de um tokenId (imóvel) específico. A função calcula o preço, verifica o pagamento, transfere os tokens do vendedor para o comprador e o dinheiro (Ether) do comprador para o vendedor.
+
+Quem pode chamar? Qualquer pessoa. A função é pública.
+
+Parâmetros (O que precisa): O tokenId do imóvel desejado e a quantidade de tokens a serem comprados. O comprador também precisa enviar o valor correspondente em Ether junto com a chamada da função.
+
+3. getImovelInfo(uint256 tokenId)
+O que faz? É uma função de consulta pública. Ela retorna todos os dados da "Ficha Cadastral" de um imóvel específico.
+
+Quem pode chamar? Qualquer pessoa. Por ser uma função de leitura (view), ela não custa gás para ser chamada.
+
+Parâmetros (O que precisa): Apenas o tokenId do imóvel a ser consultado.
+
+Funções Herdadadas (Ferramentas Importantes)
+Estas funções não foram escritas por nós, mas o contrato as possui por ter herdado os padrões da OpenZeppelin.
+
+setApprovalForAll(address operator, bool approved)
+O que faz? Esta é a função de "autorização de corretagem". O Dono do Imóvel (Vendedor) a chama uma única vez para dar permissão ao nosso contrato (ImovelToken) para movimentar seus tokens. Sem esta permissão, a função comprarTokens falhará.
+
+Quem pode chamar? Qualquer detentor de tokens (no nosso caso, o Dono do Imóvel).
+
+Parâmetros (O que precisa): O operator (o endereço do nosso contrato ImovelToken) e approved (true para dar permissão, false para revogar).
+
+balanceOf(address account, uint256 id)
+O que faz? Consulta quantos tokens de um imóvel específico uma carteira possui.
+
+Quem pode chamar? Qualquer pessoa. Também não custa gás.
+
+Parâmetros (O que precisa): O endereço da account (carteira) a ser consultada e o id (tokenId) do imóvel.
