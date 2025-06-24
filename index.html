@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Imóvel em Tokens</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Tokenize O Aluguel de Seu Imovel !!</h1>
+            <nav>
+                <ul>
+                    <li><a href="#investir">Quero Investir</a></li>
+                    <li><a href="#proprietario">Quero Tokenizar</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                </ul>
+            </nav>
+            <button id="connectWalletBtn" class="btn btn-primary">
+                <i class="fas fa-wallet"></i> Conectar Carteira
+            </button>
+            <div id="walletStatus" class="wallet-status">Não Conectado</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="investir" class="card">
+            <h2>Invista em Aluguéis Tokenizados</h2>
+            <p class="description">Adquira frações de imóveis e receba sua parte dos aluguéis mensais.</p> <p class="description">Acesso fácil e transparente ao mercado imobiliário.</p>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <img src="img/bela.jpg" alt="Apartamento Condomínio">
+                    <h3>Apto 101 - Cond. Bella Vista</h3>
+                    <p class="location">Localização: Zona Leste, Teresina-PI</p>
+                    <p class="details">Aluguel Mensal Estimado: <strong>R$ 2.800,00</strong></p>
+                    <p class="details">Tokens Disponíveis: <strong>750 de 1000</strong></p>
+                    <p class="details">Valor por Token: <strong>R$ 30,00</strong></p>
+                    <div class="buy-section">
+                        <label for="buyAmount1">Quantos tokens?</label>
+                        <input type="number" id="buyAmount1" min="1" max="750" value="10">
+                        <button class="btn btn-buy" data-property-id="condo1">Comprar Tokens</button>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <img src="img/sala.webp" alt="Sala Comercial">
+                    <h3>Sala 503 - Edifício Central</h3>
+                    <p class="location">Localização: Centro, Teresina-PI</p>
+                    <p class="details">Aluguel Mensal Estimado: <strong>R$ 3.500,00</strong></p>
+                    <p class="details">Tokens Disponíveis: <strong>1200 de 1500</strong></p>
+                    <p class="details">Valor por Token: <strong>R$ 25,00</strong></p>
+                    <div class="buy-section">
+                        <label for="buyAmount2">Quantos tokens?</label>
+                        <input type="number" id="buyAmount2" min="1" max="1200" value="20">
+                        <button class="btn btn-buy" data-property-id="office2">Comprar Tokens</button>
+                    </div>
+                </div>
+
+                </div>
+        </section>
+
+        <section id="proprietario" class="card">
+            <h2>Disponibilize Seu Imóvel para Tokenização</h2>
+            <p class="description">Libere liquidez de seus aluguéis! Tokenize seu imóvel e receba o valor antecipado da locação. Processo simples e seguro.</p>
+
+            <form id="tokenizePropertyForm">
+                <div class="form-group">
+                    <label for="propertyName">Nome do Imóvel:</label>
+                    <input type="text" id="propertyName" placeholder="Ex: Apartamento 302, Cond. Sol Nascente" required>
+                </div>
+                <div class="form-group">
+                    <label for="propertyAddress">Endereço Completo:</label>
+                    <input type="text" id="propertyAddress" placeholder="Rua, Número, Bairro, Cidade, Estado" required>
+                </div>
+                <div class="form-group">
+                    <label for="rentalValue">Valor do Aluguel Mensal Estimado (R$):</label>
+                    <input type="number" id="rentalValue" min="100" placeholder="2500" required>
+                </div>
+                <div class="form-group">
+                    <label for="totalTokens">Número Total de Tokens a Emitir:</label>
+                    <input type="number" id="totalTokens" min="100" placeholder="1000" required>
+                </div>
+                <div class="form-group">
+                    <label for="tokenPrice">Valor Unitário do Token (R$):</label>
+                    <input type="number" id="tokenPrice" min="1" step="0.01" placeholder="25.00" required>
+                </div>
+                 <div class="form-group">
+                    <label for="propertyImage">URL da Imagem do Imóvel:</label>
+                    <input type="url" id="propertyImage" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                <button type="submit" class="btn btn-primary">Tokenizar Imóvel</button>
+            </form>
+        </section>
+
+        <section id="como-funciona" class="card">
+            <h2>Como Funciona?</h2>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <h3>1. O Proprietário Tokeniza</h3>
+                    <p>O proprietário cadastra o imóvel, define o valor do aluguel e o número de tokens. Nossa plataforma converte os direitos de recebimento de aluguel em tokens digitais.</p>
+                </div>
+                <div class="step-item">
+                    <h3>2. Investidores Adquirem Tokens</h3>
+                    <p>Pessoas como você podem comprar esses tokens em frações, usando sua carteira MetaMask. Cada token representa uma pequena parte do direito ao aluguel.</p>
+                </div>
+                <div class="step-item">
+                    <h3>3. Aluguel Pago</h3>
+                    <p>O inquilino paga o aluguel mensalmente. Esse valor é processado pela plataforma.</p>
+                </div>
+                <div class="step-item">
+                    <h3>4. Distribuição Automática</h3>
+                    <p>O contrato inteligente distribui automaticamente a parcela do aluguel para todos os detentores dos tokens, proporcionalmente à quantidade que possuem.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Seu Imóvel em Tokens. Todos os direitos reservados.</p>
+            <p>Alimentado por Blockchain e MetaMask.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.2/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

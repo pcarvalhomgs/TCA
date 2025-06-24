@@ -1,0 +1,268 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Um cinza claro */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50; /* Azul escuro */
+    color: #fff;
+    padding: 15px 0;
+    border-bottom: 5px solid #27ae60; /* Verde vibrante */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para responsividade */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    flex-shrink: 0; /* Não encolher */
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza itens de navegação em telas menores */
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ecf0f1; /* Cinza mais claro */
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: #27ae60; /* Verde vibrante */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #2ecc71; /* Verde mais claro */
+}
+
+.btn-buy {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+    margin-top: 10px;
+}
+
+.btn-buy:hover {
+    background-color: #2980b9; /* Azul mais escuro */
+}
+
+/* Status da Carteira */
+.wallet-status {
+    color: #fff;
+    margin-left: 20px;
+    font-size: 0.9em;
+}
+
+/* Main Content - Cards */
+main .card {
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 10px;
+}
+
+.card .description {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Grid de Imóveis */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.property-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.property-card h3 {
+    margin: 15px 15px 5px 15px;
+    color: #2c3e50;
+    font-size: 1.3em;
+}
+
+.property-card .location,
+.property-card .details {
+    padding: 0 15px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.property-card .buy-section {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    margin-top: auto; /* Empurra a seção para o final do card */
+    display: flex;
+    flex-direction: column;
+}
+
+.property-card .buy-section label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.property-card .buy-section input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding e border estejam dentro da largura */
+}
+
+/* Formulário de Proprietário */
+#tokenizePropertyForm .form-group {
+    margin-bottom: 15px;
+}
+
+#tokenizePropertyForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+#tokenizePropertyForm input[type="text"],
+#tokenizePropertyForm input[type="number"],
+#tokenizePropertyForm input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Passos de Como Funciona */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.step-item {
+    background-color: #ecf0f1; /* Cinza claro para os passos */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.step-item h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+    background-color: #34495e; /* Azul acinzentado */
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        margin-top: 15px;
+    }
+
+    header nav ul li {
+        margin: 5px 10px;
+    }
+
+    #connectWalletBtn {
+        margin-top: 15px;
+    }
+
+    .wallet-status {
+        margin: 10px 0 0 0;
+    }
+
+    .property-grid, .steps-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+}
